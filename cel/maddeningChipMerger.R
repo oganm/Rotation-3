@@ -1,5 +1,3 @@
-source('C:/Users/Ogan/Dropbox/Rotation 3/ogbox.r')
-
 wd = getwd()
 setwd('..')
 parent = getwd()
@@ -108,15 +106,15 @@ boxplot(aned[,4:ncol(aned)])
 df = read.xls("Design.xls")
 gsms = regmatches(df[, 1], gregexpr("GSM\\d\\d\\d\\d\\d(\\d|)", df[, 1],perl=T))
 
-colnames(aned) %in% gsms[[65]]
+gsms = regmatches(df[, 1], gregexpr("(GSM\\d\\d\\d\\d\\d(\\d|))|(PC\\d....)|(Y+.*?((?=(,))|\\d+))|(((?<=:)|(?<=,))A\\d.*?30A)|(v2_(?![G,H,r]).*?((?=(,))|($)))|(SSC.*?((?=(,))|($)))|(MCx.*?((?=(,))|($)))|(Cbx.*?((?=(,))|($)))", df[, 1],perl=T))
 
 
 indexes = vector()
 for (i in 1:length(header)){
    indexes = c(indexes, findInList(header[i], gsms))
 }
-
-
+1:70 %in% indexes
+header[!header %in% unlist(gsms)]
 newDesign = data.frame(sampleName = header, originalIndex = indexes, df[indexes,])
 colnames(newDesign) = c('sampleName','originalIndex','officialName','cellType','anatomical','age','method','isolation','amplification','RNAamount','platform','reference')
 newDesign$originalIndex = as.numeric(newDesign$originalIndex)

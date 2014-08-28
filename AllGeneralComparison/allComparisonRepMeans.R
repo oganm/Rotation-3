@@ -1,7 +1,12 @@
-source('/C:/Users/Ogan/Dropbox/Rotation 3/ogbox.r')
+loc = getwd()
+setwd('..')
+parent = getwd()
+setwd(loc)
+
+
+source(paste0(parent,'/ogbox.r'))
 require(reshape)
 require(cluster)
-
 
 foldChange2 = function (group1, group2, f = 10){
 
@@ -72,8 +77,10 @@ giveSilhouette = function(daGeneIndex, groupInfo1, groupInfo2){
 
 #Data preperation
 ####################
-design = read.table('C:/Users/Ogan/Dropbox/Rotation 3/Data/normalizedDesign.csv',header=T,sep='\t')
 
+design = read.table(paste0(parent,'/Data/normalizedDesign.csv'),header=T,sep='\t')
+#design = read.csv('C:/Users/Ogan/Dropbox/Rotation 3/Data/normalizedDesignEBENISIKIYIM.csv')
+#write.table(design,quote=F,file='normalizedDesign2.csv', sep = "\t", row.names = F)
 
 design$anatomical = gsub('Corpus Striatum', 'Striatum', design$anatomical)
 design$anatomical = gsub('Motor Cortex', 'Motor cortex', design$anatomical)
@@ -85,11 +92,11 @@ design$cellType[grepl('^Neurons', design$cellType)] = 'Mixed Neurons'
 design$cellType=gsub(', P.*?$','',design$cellType)
 
 
-allDataPre = read.csv('C:/Users/Ogan/Dropbox/Rotation 3/Data/mostVariableQuantileNormalized', header = T)
+allDataPre = read.csv(paste0(parent,'/Data/mostVariableQuantileNormalized'), header = T)
 geneData = allDataPre[,1:3]
 exprData = allDataPre[,4:ncol(allDataPre)]
 exprData = exprData
-design = design[match(colnames(exprData),design$sampleName,),]
+design = design[match(colnames(exprData),make.names(design$sampleName),),]
 rowmax = apply(exprData, 1, max)
 discludeGenes = which(rowmax<5)
 
@@ -120,7 +127,15 @@ nameGroups = list(someNaming = newDesign$someNaming,
                   ourNaming = newDesign$ourNaming,
                   cellKind = newDesign$cellKind,
                   justGaba = newDesign$justGaba,
-                  justGabaPV = newDesign$justGabaPV)
+                  justGabaPV = newDesign$justGabaPV,
+                  Cortex = newDesign$Cortex,
+                  Amygdala = newDesign$Amygdala,
+                  Striatum = newDesign$Striatum,
+                  Midbrain = newDesign$Midbrain,
+                  CortexWGaba = newDesign$CortexWGaba,
+                  CortexWInter = newDesign$CortexWInter,
+                  Cortex.SingleGroupInterGaba = newDesign$Cortex.SingleGroupInterGaba,
+                  CortexWGabaDetailed = newDesign$CortexWGabaDetailed)
 
 stepi = 1
 for (i in nameGroups){
@@ -134,7 +149,7 @@ for (i in nameGroups){
     
     
     for (j in realGroups){
-        groupAverage = tryCatch({apply(newExpr[j,], 2, median)},
+        groupAverage = tryCatch({apply(newExpr[j,], 2, mean)},
                                 error = function(cond){
                                     print('fuu')
                                     return(newExpr[j,])

@@ -12,6 +12,9 @@ df = read.xls( "Design.xls")
 gsms = regmatches(df[, 1], gregexpr("GSM\\d\\d\\d\\d\\d(\\d|)", df[, 1],perl=T))
 
 
+gsms = regmatches(df[, 1], gregexpr("(GSM\\d\\d\\d\\d\\d(\\d|))|(PC\\d....)|(Y+.*?((?=(,))|\\d+))|(((?<=:)|(?<=,))A\\d.*?30A)|(v2_(?![G,H,r]).*?((?=(,))|($)))", df[, 1],perl=T))
+
+
 
 
 source("http://www.bioconductor.org/biocLite.R")

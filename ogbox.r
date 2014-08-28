@@ -1,8 +1,20 @@
+gsubMult = function(patterns, replacements, x,  
+                    ignore.case = FALSE, perl = FALSE, fixed = FALSE, useBytes = FALSE) {
+    for (i in 1:length(patterns)){
+        x = gsub(patterns[i],replacements[i],x, 
+                 ignore.case, perl, fixed, useBytes)
+    }
+    return(x)
+}
+
+
+
 #paste to directory, now replaced by modified +. here for historical reasons
 dpaste = function (...){
     paste(..., sep='')
 }
 
+#remove this when you can. dangerous for many things.
 "+" = function(x, y) {
     if(is.character(x) | is.character(y)) {
         return(paste(x, y, sep = ""))
