@@ -8,12 +8,14 @@ source('https://raw.githubusercontent.com/oganm/toSource/master/mergeChips.R')
 require(affy)
 require(compare)
 
-desFile='Data/Design.csv'
-celRegex='(GSM.*?(?=,|$))|(PC\\d....)|(Y+.*?((?=(,))|\\d+))|(((?<=:)|(?<=,))A\\d.*?30A)|(v2_(?![G,H,r]).*?((?=(,))|($)))|(SSC.*?((?=(,))|($)))|(MCx.*?((?=(,))|($)))|(Cbx.*?((?=(,))|($)))'
+desFile='Data2/Design.csv'
+# just selects S1s of dopaminergics   (((?<=:)|(?<=[,]))A\d.*?S1_M430A)
+celRegex='(GSM.*?(?=,|$))|(PC\\d....)|(Y[+].*?((?=(,))|\\d+))|((?<=:)|(?<=[,]))A((9)|(10))_[0-9]{1,}_Chee_S1_M430A|(v2_(?![G,H,r]).*?((?=(,))|($)))|(SSC.*?((?=(,))|($)))|(MCx.*?((?=(,))|($)))|(Cbx.*?((?=(,))|($)))'
 celDir ='cel'
-outFolder='Data'
+outFolder='Data2'
 
 design = read.table(desFile,quote='',header=T,sep='\t')
+gsms = regmatches(design[, 1], gregexpr(celRegex, design[, 1],perl=T))
 
 platforms = unique(design$Platform)
 

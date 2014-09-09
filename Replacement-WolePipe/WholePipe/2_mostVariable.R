@@ -1,5 +1,5 @@
-whichFile = 'Data/allNormalized'
-outFile = 'Data/mostVariableExp'
+whichFile = 'Data2/mostQuantileNormalized'
+outFile = 'Data2/mostVariableQuantileNormalized'
 
 
 mostVariable = function(whichFile,outFile){

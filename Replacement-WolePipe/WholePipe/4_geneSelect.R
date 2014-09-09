@@ -1,12 +1,14 @@
-designLoc = 'Data/normalizedDesign'
-exprLoc = 'Data/mostVariableQuantileNormalized'
-outLoc = 'Data/Rest'
+designLoc = 'Data2/normalizedDesign'
+exprLoc = 'Data2/mostVariableQuantileNormalized'
+outLoc = 'Data2/Rest'
 #collumn names that define groups
-groupNames = c('someNaming2',
-               'someNaming1',
-               'ourNaming3',
-               'ourNaming2',
-               'ourNaming1')
+#groupNames = c('someNaming2',
+#               'someNaming1',
+#               'ourNaming3',
+#               'ourNaming2',
+#               'ourNaming1')
+
+groupNames = 'someNaming'
 
 source('https://raw.githubusercontent.com/oganm/toSource/master/ogbox.r')
 require(reshape)

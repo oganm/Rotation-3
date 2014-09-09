@@ -135,8 +135,8 @@ cellTypeNames = c('Oligodendrocytes','Mature Oligodendrocytes', 'Oligodendrocyte
 typeColors =    c('darkgreen'       ,'forestgreen'            , 'greenyellow'               ,'green'                 , 'yellow'   , 'tan'       , 'palegreen'   , 'red'              , 'darkorange' , 'blanchedalmond'      , 'slategray'    , 'mediumpurple4'        ,'orchid'     , 'turquoise', 'purple'        , 'pink'        , 'thistle'      , 'powderblue'          , 'black'        , 'white',colorRampPalette(c("firebrick4",'coral'))(n = 5))
 typeColors = typeColors[1:25]
 
-cellTypeNames = c('Oligo',      'Astro'    , 'Bergman', 'MotorCholin', 'Cholinergic', 'Spiny',                'Gluta',    'Basket',          'Golgi', 'Pyramidal', 'Purkinje', 'Inter', 'Granule', 'Ubc',        'Microglia','Gaba')
-typeColors =    c('darkgreen', 'yellow'   , 'palegreen'   , 'red'   , 'darkorange' , 'blanchedalmond'      , 'slategray', 'mediumpurple4'  ,'orchid', 'turquoise', 'purple',   'pink' , 'thistle', 'powderblue', 'white',"firebrick4")
+cellTypeNames = c('Oligo',      'Astroglia'    , 'Bergman', 'MotorCholin', 'Cholinergic', 'Spiny',                'Gluta',    'Basket',          'Golgi', 'Pyramidal', 'Purkinje', 'Inter', 'Granule', 'Ubc',        'Microglia','Gaba')
+typeColors =    c('darkgreen',  'yellow'       , 'palegreen'   , 'red'   , 'darkorange' , 'blanchedalmond'      , 'slategray', 'mediumpurple4'  ,'orchid', 'turquoise', 'purple',   'pink' , 'thistle', 'powderblue', 'white',"firebrick4")
 
 
 

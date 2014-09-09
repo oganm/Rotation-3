@@ -1,5 +1,5 @@
-whichFile = 'Data/mostVariableExp'
-outFile = 'Data/mostVariableQuantileNormalized'
+whichFile = 'Data2/allNormalized'
+outFile = 'Data2/mostQuantileNormalized'
 
 quantileNorm = function(whichFile,outFile){
     require(preprocessCore)
